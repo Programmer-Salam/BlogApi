@@ -21,7 +21,6 @@ Route::prefix('v1')->middleware('jwt')->group(function () {
     // User posts
     Route::apiResource('user/posts', PostController::class);
 
-    // Logout (if using Sanctum)
     Route::post('logout', function () {
         auth()->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'Logged out successfully']);

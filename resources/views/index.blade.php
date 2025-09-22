@@ -18,7 +18,7 @@
         </div>
 
         <div id="postsContainer" class="hidden">
-            <!-- Posts will be loaded here -->
+
         </div>
 
         <div id="noPosts" class="hidden text-center">
@@ -51,11 +51,11 @@
             console.log('Posts response:', data);
 
             if (response.ok) {
-                // Posts are directly in data.data array
+
                 const posts = data.data;
                 displayPosts(posts);
 
-                // Render pagination if available
+
                 if (data.meta) {
                     renderPagination(data.meta);
                 }
@@ -133,12 +133,10 @@
 
         let paginationHTML = '';
 
-        // Previous button
         if (meta.current_page > 1) {
             paginationHTML += `<button onclick="loadPage(${meta.current_page - 1})" class="page-btn">Previous</button>`;
         }
 
-        // Page numbers
         for (let i = 1; i <= meta.last_page; i++) {
             if (i === meta.current_page) {
                 paginationHTML += `<button class="page-btn active">${i}</button>`;
@@ -147,7 +145,6 @@
             }
         }
 
-        // Next button
         if (meta.current_page < meta.last_page) {
             paginationHTML += `<button onclick="loadPage(${meta.current_page + 1})" class="page-btn">Next</button>`;
         }
@@ -165,9 +162,6 @@
             showNotification('Please login to edit posts', 'error');
             return;
         }
-
-        // Redirect to edit page or show edit modal
-        // For now, let's create a simple edit modal
         showEditModal(postId);
     }
 
@@ -191,7 +185,7 @@
 
                 if (response.ok && data.status === 'success') {
                     showNotification(data.message || 'Post deleted successfully');
-                    // Reload posts after deletion
+
                     setTimeout(() => {
                         loadPosts(currentPage, currentSearch);
                     }, 1000);
@@ -206,7 +200,7 @@
     }
 
     function showEditModal(postId) {
-        // Simple prompt-based edit for now
+
         const newTitle = prompt('Enter new title:');
         if (newTitle) {
             const newBody = prompt('Enter new content:');
@@ -232,7 +226,7 @@
 
             if (response.ok && data.status === 'success') {
                 showNotification(data.message || 'Post updated successfully');
-                // Reload posts after update
+
                 setTimeout(() => {
                     loadPosts(currentPage, currentSearch);
                 }, 1000);
