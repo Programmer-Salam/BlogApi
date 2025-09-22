@@ -69,10 +69,9 @@
 
                 showNotification(data.message);
 
-                // Update navigation immediately
                 updateNavigation();
 
-                // Redirect to home after a brief delay
+
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1000);
