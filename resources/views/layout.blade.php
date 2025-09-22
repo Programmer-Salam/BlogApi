@@ -217,10 +217,9 @@
     </div>
 
     <script>
-        // API Configuration - Define these at the top
+
         const API_BASE = '/api/v1';
 
-        // Authentication functions
         function getAuthToken() {
             return localStorage.getItem('authToken');
         }
@@ -234,7 +233,6 @@
             return !!getAuthToken() && !!getCurrentUser();
         }
 
-        // Update navigation based on auth status
         function updateNavigation() {
             const authLinks = document.getElementById('authLinks');
             const userLinks = document.getElementById('userLinks');
@@ -251,7 +249,6 @@
             }
         }
 
-        // Notification system
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             if (notification) {
@@ -265,7 +262,6 @@
             }
         }
 
-        // Logout function
         async function logout() {
             try {
                 const token = getAuthToken();
@@ -288,7 +284,6 @@
             }
         }
 
-        // Initialize navigation on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateNavigation();
         });

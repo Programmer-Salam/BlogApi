@@ -31,14 +31,14 @@
 
 @section('scripts')
 <script>
-    // Check if user is authenticated
+
     document.addEventListener('DOMContentLoaded', function() {
         if (!isLoggedIn()) {
             showNotification('Please login to create a post', 'error');
             setTimeout(() => {
                 window.location.href = '/login';
             }, 2000);
-            // Disable the form
+
             const submitBtn = document.getElementById('createPostForm').querySelector('button[type="submit"]');
             if (submitBtn) submitBtn.disabled = true;
         }

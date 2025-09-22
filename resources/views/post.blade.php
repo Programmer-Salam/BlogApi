@@ -15,7 +15,7 @@
             </a>
 
             <div id="postContent">
-                <!-- Post content will be loaded here -->
+            
             </div>
         </div>
     </div>
@@ -28,11 +28,9 @@
 
 @section('scripts')
 <script>
-    // Get post ID from URL
     const pathParts = window.location.pathname.split('/');
     const postId = pathParts[pathParts.length - 1];
 
-    // Load post on page load
     document.addEventListener('DOMContentLoaded', loadPost);
 
     async function loadPost() {
@@ -45,7 +43,6 @@
             console.log('Single post response:', data);
 
             if (response.ok) {
-                // Post is directly in data (not data.data)
                 const post = data.data;
                 displayPost(post);
             } else {
